@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import styles from './style.css';
 
 const Home = () => (
     <div>
@@ -10,7 +11,9 @@ const Home = () => (
                 {"property": "og:type", "content": "article"}
             ]}
         />
-        <h1>Welcome Home</h1>
+        <div className={styles.title}>
+            <h1>eatrocks.io</h1>
+        </div>
     </div>
 );
 

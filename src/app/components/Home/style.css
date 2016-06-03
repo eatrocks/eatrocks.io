@@ -1,7 +1,5 @@
-.my-class {
-    background: red;
-}
-
-.your-class {
-    background: green;
+.title {
+    justify-content: center;
+    display: flex;
+    line-height: 200px;
 }
