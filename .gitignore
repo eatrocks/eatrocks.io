@@ -3,10 +3,12 @@ npm-debug.log
 .DS_Store
 
 # built files
-/dist
-static/assets
-static/app.*
-server/modules/react-server-app
+# Don't ignore build files for deploying to Heroku...
+# Until I have a build process in place.
+#/dist
+#static/assets
+#static/app.*
+#server/modules/react-server-app
 
 # when I have secrets in .env...
 # .env
