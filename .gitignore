@@ -7,3 +7,6 @@ npm-debug.log
 static/assets
 static/app.*
 server/modules/react-server-app
+
+# when I have secrets in .env...
+# .env
