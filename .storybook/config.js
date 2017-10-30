@@ -1,7 +1,10 @@
 import { configure } from '@kadira/storybook';
 
+
 function loadStories() {
-    require('../src/app/components/Welcome/WelcomeStory.js');
+    const req = require.context('../src/app', true, /.story.js$/);
+    req.keys().forEach((filename) => req(filename))
 }
+
 
 configure(loadStories, module);
