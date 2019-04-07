@@ -26,7 +26,7 @@ app.use("/api", api);
 app.get("*", reactHandler);
 
 // handle any errors
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // eslint-disable-line
   res.status(err.status || 500).send("Application Error");
   console.error(err.status === 404 ? `404 ${req.url}` : err.stack); // eslint-disable-line
