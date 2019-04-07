@@ -2,25 +2,22 @@
 
 A project starter for universalmorphic React/Redux apps
 
-
-
 ## Features
 
-*   [React](https://facebook.github.io/react/): THE component-based view library.
-*   [Redux](http://redux.js.org/): application state management
-*   [React-Redux Official Bindings](https://github.com/reactjs/react-redux): remove the boilerplate code when connecting React to Redux
-*   [React Router](https://github.com/reactjs/react-router): server/client side application router
-*   [Redux Thunk](https://github.com/gaearon/redux-thunk): easier async and sequential actions.
-*   [React Helmet](https://github.com/nfl/react-helmet): title and meta tags FTW
-*   [ExpressJS](http://expressjs.com/): server-side app framework.
-*   [WebPack](https://webpack.github.io/): module bundler.
-*   [PostCSS](https://github.com/postcss/postcss): CSS transformations via JS
-*   [CSS Modules](https://github.com/css-modules/css-modules): private name spaces for css classes.
-*   [CSSNext](http://cssnext.io/): future CSS today.
-*   [React StoryBook](https://github.com/kadirahq/react-storybook): a component authoring sandbox. also component functional testing .
-*   [Enzyme](https://github.com/airbnb/enzyme) & [Tape](https://github.com/substack/tape): unit testing
-*   [Eslint](http://eslint.org/): JS linting.
-
+- [React](https://facebook.github.io/react/): THE component-based view library.
+- [Redux](http://redux.js.org/): application state management
+- [React-Redux Official Bindings](https://github.com/reactjs/react-redux): remove the boilerplate code when connecting React to Redux
+- [React Router](https://github.com/reactjs/react-router): server/client side application router
+- [Redux Thunk](https://github.com/gaearon/redux-thunk): easier async and sequential actions.
+- [React Helmet](https://github.com/nfl/react-helmet): title and meta tags FTW
+- [ExpressJS](http://expressjs.com/): server-side app framework.
+- [WebPack](https://webpack.github.io/): module bundler.
+- [PostCSS](https://github.com/postcss/postcss): CSS transformations via JS
+- [CSS Modules](https://github.com/css-modules/css-modules): private name spaces for css classes.
+- [CSSNext](http://cssnext.io/): future CSS today.
+- [React StoryBook](https://github.com/kadirahq/react-storybook): a component authoring sandbox. also component functional testing .
+- [Enzyme](https://github.com/airbnb/enzyme) & [Tape](https://github.com/substack/tape): unit testing
+- [Eslint](http://eslint.org/): JS linting.
 
 ## Development
 
@@ -31,9 +28,25 @@ A project starter for universalmorphic React/Redux apps
 1.  build the production app via `npm run build`
 1.  start the app via `npm start`
 
-
 ## Files
 
 1.  The React / Redux app is found in [src/app](./src/app)
 1.  The production Express.js server is found in [src/server](./src/server)
 1.  Component stories (for the component dev environment) is found in [.storybook/config.js](./.storybook/config.js)
+
+## Deploy
+
+Currently done manually to Heroku
+
+### Install the Heroku CLI if needed
+
+brew tap heroku/brew && brew install heroku
+
+### Commit changes
+
+A deploy is done via a git push. So commit your changes.
+
+### Push / Deploy
+
+heroku login
+git push heroku master

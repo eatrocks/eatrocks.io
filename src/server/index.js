@@ -5,7 +5,7 @@ import path from "path";
 import compression from "compression";
 import helmet from "helmet";
 import { api } from "./routes";
-import enforce from "express-sslify";
+// import enforce from "express-sslify";
 
 // the reactified route-handler from the `app`
 import reactHandler from "../app/_server.js";
@@ -15,7 +15,7 @@ export const app = express();
 
 // middleware
 // DISABLE THIS LINE TO RUN LOCALLY - TODO FIGURE OUT HOW TO AUTOMATE THIS
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(compression());
 app.use(helmet());
 app.use("/static", express.static(path.join(__dirname, "static")));
