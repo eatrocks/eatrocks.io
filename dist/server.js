@@ -42,12 +42,12 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.app = undefined;
 
@@ -73,7 +73,11 @@
 
 	var _routes = __webpack_require__(7);
 
-	var _server = __webpack_require__(10);
+	var _expressSslify = __webpack_require__(10);
+
+	var _expressSslify2 = _interopRequireDefault(_expressSslify);
+
+	var _server = __webpack_require__(11);
 
 	var _server2 = _interopRequireDefault(_server);
 
@@ -83,71 +87,73 @@
 	var app = exports.app = (0, _express2.default)();
 
 	// middleware
+	// DISABLE THIS LINE TO RUN LOCALLY - TODO FIGURE OUT HOW TO AUTOMATE THIS
 
 
 	// the reactified route-handler from the `app`
+	app.use(_expressSslify2.default.HTTPS({ trustProtoHeader: true }));
 	app.use((0, _compression2.default)());
 	app.use((0, _helmet2.default)());
-	app.use('/static', _express2.default.static(_path2.default.join(__dirname, 'static')));
+	app.use("/static", _express2.default.static(_path2.default.join(__dirname, "static")));
 
-	app.use('/api', _routes.api);
+	app.use("/api", _routes.api);
 
 	// handle routes via react...
-	app.get('*', _server2.default);
+	app.get("*", _server2.default);
 
 	// handle any errors
 	app.use(function (err, req, res, next) {
-	    // eslint-disable-line
-	    res.status(err.status || 500).send("Application Error");
-	    console.error(err.status === 404 ? '404 ' + req.url : err.stack); // eslint-disable-line
+	  // eslint-disable-line
+	  res.status(err.status || 500).send("Application Error");
+	  console.error(err.status === 404 ? "404 " + req.url : err.stack); // eslint-disable-line
 	});
 
 	var PORT = process.env.PORT;
 
 
 	app.listen(PORT, function () {
-	    return console.log('Running on port ' + PORT);
+	  return console.log("Running on port " + PORT);
 	}); // eslint-disable-line
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("dotenv/config");
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("isomorphic-fetch");
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("express");
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("path");
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("compression");
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("helmet");
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -164,9 +170,9 @@
 	  }
 	});
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -203,15 +209,21 @@
 
 	exports.default = router;
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = require("cors");
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
+
+	module.exports = require("express-sslify");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -221,37 +233,37 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _react = __webpack_require__(11);
+	var _react = __webpack_require__(12);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _HTML = __webpack_require__(12);
+	var _HTML = __webpack_require__(13);
 
 	var _HTML2 = _interopRequireDefault(_HTML);
 
-	var _server = __webpack_require__(13);
+	var _server = __webpack_require__(14);
 
-	var _reactRouter = __webpack_require__(14);
+	var _reactRouter = __webpack_require__(15);
 
-	var _reactRedux = __webpack_require__(15);
+	var _reactRedux = __webpack_require__(16);
 
-	var _reactHelmet = __webpack_require__(16);
+	var _reactHelmet = __webpack_require__(17);
 
 	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-	var _routes = __webpack_require__(17);
+	var _routes = __webpack_require__(18);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _store = __webpack_require__(30);
+	var _store = __webpack_require__(31);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _htmlMinifier = __webpack_require__(34);
+	var _htmlMinifier = __webpack_require__(35);
 
-	var _ssResolve = __webpack_require__(35);
+	var _ssResolve = __webpack_require__(36);
 
-	var _env = __webpack_require__(33);
+	var _env = __webpack_require__(34);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -263,40 +275,38 @@
 	        } else if (redirect) {
 	            res.redirect(redirect.pathname + redirect.search);
 	        } else if (props) {
-	            (function () {
-	                var store = (0, _store2.default)();
+	            var store = (0, _store2.default)();
 
-	                (0, _ssResolve.resolve)(props, store).then(function () {
-	                    var initialState = store.getState();
+	            (0, _ssResolve.resolve)(props, store).then(function () {
+	                var initialState = store.getState();
 
-	                    var content = (0, _server.renderToString)(_react2.default.createElement(
-	                        _reactRedux.Provider,
-	                        { store: store },
-	                        _react2.default.createElement(_reactRouter.RouterContext, props)
-	                    ));
+	                var content = (0, _server.renderToString)(_react2.default.createElement(
+	                    _reactRedux.Provider,
+	                    { store: store },
+	                    _react2.default.createElement(_reactRouter.RouterContext, props)
+	                ));
 
-	                    res.send((0, _htmlMinifier.minify)((0, _HTML2.default)(_extends({}, _reactHelmet2.default.rewind(), {
-	                        content: content,
-	                        initialState: initialState,
-	                        env: { DEV_ENDPOINT_BASE: _env.DEV_ENDPOINT_BASE }
-	                    })), { collapseWhitespace: true, removeAttributeQuotes: true }));
-	                }).catch(next);
-	            })();
+	                res.send((0, _htmlMinifier.minify)((0, _HTML2.default)(_extends({}, _reactHelmet2.default.rewind(), {
+	                    content: content,
+	                    initialState: initialState,
+	                    env: { DEV_ENDPOINT_BASE: _env.DEV_ENDPOINT_BASE }
+	                })), { collapseWhitespace: true, removeAttributeQuotes: true }));
+	            }).catch(next);
 	        } else {
 	            res.status(404).send('Not Found');
 	        }
 	    });
 	};
 
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
 
 	module.exports = require("react");
 
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -305,48 +315,48 @@
 	});
 
 	exports.default = function (_ref) {
-	    var _ref$title = _ref.title;
-	    var title = _ref$title === undefined ? "" : _ref$title;
-	    var _ref$meta = _ref.meta;
-	    var meta = _ref$meta === undefined ? "" : _ref$meta;
-	    var _ref$links = _ref.links;
-	    var links = _ref$links === undefined ? "" : _ref$links;
-	    var _ref$content = _ref.content;
-	    var content = _ref$content === undefined ? "" : _ref$content;
-	    var _ref$initialState = _ref.initialState;
-	    var initialState = _ref$initialState === undefined ? {} : _ref$initialState;
-	    var _ref$env = _ref.env;
-	    var env = _ref$env === undefined ? {} : _ref$env;
+	    var _ref$title = _ref.title,
+	        title = _ref$title === undefined ? "" : _ref$title,
+	        _ref$meta = _ref.meta,
+	        meta = _ref$meta === undefined ? "" : _ref$meta,
+	        _ref$links = _ref.links,
+	        links = _ref$links === undefined ? "" : _ref$links,
+	        _ref$content = _ref.content,
+	        content = _ref$content === undefined ? "" : _ref$content,
+	        _ref$initialState = _ref.initialState,
+	        initialState = _ref$initialState === undefined ? {} : _ref$initialState,
+	        _ref$env = _ref.env,
+	        env = _ref$env === undefined ? {} : _ref$env;
 	    return "\n<html>\n    <head>\n        <meta charset=\"utf-8\">\n        " + title + "\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        " + meta + "\n        " + links + "\n        <link href=/static/app.css rel=stylesheet>\n\n    </head>\n\n    <body>\n        <div id=app>" + content + "</div>\n        <script>\n            window.__INITIAL_STATE__ = " + JSON.stringify(initialState) + ";\n            window.__APP_ENV_VARS__ = " + JSON.stringify(env) + ";\n        </script>\n        <script type=text/javascript src=/static/app.js charset=utf-8 async></script>\n    </body>\n</html>\n";
 	};
 
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
 
 	module.exports = require("react-dom/server");
 
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
 
 	module.exports = require("react-router");
 
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
 
 	module.exports = require("react-redux");
 
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
 
 	module.exports = require("react-helmet");
 
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -354,17 +364,17 @@
 	    value: true
 	});
 
-	var _react = __webpack_require__(11);
+	var _react = __webpack_require__(12);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(14);
+	var _reactRouter = __webpack_require__(15);
 
-	var _app = __webpack_require__(18);
+	var _app = __webpack_require__(19);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _home = __webpack_require__(26);
+	var _home = __webpack_require__(27);
 
 	var _home2 = _interopRequireDefault(_home);
 
@@ -378,9 +388,9 @@
 
 	exports.default = routes;
 
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -388,9 +398,9 @@
 	    value: true
 	});
 
-	var _reactRedux = __webpack_require__(15);
+	var _reactRedux = __webpack_require__(16);
 
-	var _AppLayout = __webpack_require__(19);
+	var _AppLayout = __webpack_require__(20);
 
 	var _AppLayout2 = _interopRequireDefault(_AppLayout);
 
@@ -415,6 +425,7 @@
 	// class but superimposes it with a static method that a corresponding
 	// module looks for on server before rendering...
 	// const SSResolvedComponent = wrap(LazyApp, resolveOnServer)
+
 
 	// Create args for the react-redux `connect` function
 	// https://github.com/reactjs/react-redux/blob/master/docs/api.md
@@ -447,9 +458,9 @@
 	// Export the resulting component...
 	exports.default = (0, _reactRedux.connect)()(_AppLayout2.default);
 
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -458,13 +469,13 @@
 	});
 	exports.AppLayout = undefined;
 
-	var _react = __webpack_require__(11);
+	var _react = __webpack_require__(12);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(20);
+	__webpack_require__(21);
 
-	var _style = __webpack_require__(24);
+	var _style = __webpack_require__(25);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -489,26 +500,26 @@
 
 	exports.default = AppLayout;
 
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
-/***/ },
-/* 21 */,
+/***/ }),
 /* 22 */,
 /* 23 */,
-/* 24 */
-/***/ function(module, exports) {
+/* 24 */,
+/* 25 */
+/***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"app":"app-3mneB","header":"header-1fvkh","wrapper":"wrapper-1ukC9"};
 
-/***/ },
-/* 25 */,
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 26 */,
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -516,19 +527,19 @@
 	  value: true
 	});
 
-	var _Home = __webpack_require__(27);
+	var _Home = __webpack_require__(28);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _reactRedux = __webpack_require__(15);
+	var _reactRedux = __webpack_require__(16);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = (0, _reactRedux.connect)()(_Home2.default);
 
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -536,17 +547,17 @@
 	    value: true
 	});
 
-	var _react = __webpack_require__(11);
+	var _react = __webpack_require__(12);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(15);
+	var _reactRedux = __webpack_require__(16);
 
-	var _reactHelmet = __webpack_require__(16);
+	var _reactHelmet = __webpack_require__(17);
 
 	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-	var _style = __webpack_require__(28);
+	var _style = __webpack_require__(29);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -574,17 +585,17 @@
 
 	exports.default = (0, _reactRedux.connect)()(Home);
 
-/***/ },
-/* 28 */
-/***/ function(module, exports) {
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"title":"title-2EKhR"};
 
-/***/ },
-/* 29 */,
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 30 */,
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -592,13 +603,13 @@
 	    value: true
 	});
 
-	var _redux = __webpack_require__(31);
+	var _redux = __webpack_require__(32);
 
-	var _reduxThunk = __webpack_require__(32);
+	var _reduxThunk = __webpack_require__(33);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _env = __webpack_require__(33);
+	var _env = __webpack_require__(34);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -618,21 +629,21 @@
 	    return (0, _redux.createStore)(rootReducer, initialState, reduxMiddleware);
 	};
 
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
+/***/ }),
+/* 32 */
+/***/ (function(module, exports) {
 
 	module.exports = require("redux");
 
-/***/ },
-/* 32 */
-/***/ function(module, exports) {
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
 
 	module.exports = require("redux-thunk");
 
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -640,7 +651,7 @@
 	    value: true
 	});
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var isBrowser = exports.isBrowser = (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object";
 
@@ -651,15 +662,15 @@
 	var DEV_ENDPOINT_BASE = _ref.DEV_ENDPOINT_BASE;
 	exports.DEV_ENDPOINT_BASE = DEV_ENDPOINT_BASE;
 
-/***/ },
-/* 34 */
-/***/ function(module, exports) {
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
 
 	module.exports = require("html-minifier");
 
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -668,11 +679,11 @@
 	});
 	exports.wrap = exports.resolve = undefined;
 
-	var _resolver = __webpack_require__(36);
+	var _resolver = __webpack_require__(37);
 
 	var _resolver2 = _interopRequireDefault(_resolver);
 
-	var _wrap = __webpack_require__(37);
+	var _wrap = __webpack_require__(38);
 
 	var _wrap2 = _interopRequireDefault(_wrap);
 
@@ -682,9 +693,9 @@
 	exports.wrap = _wrap2.default;
 	exports.default = { resolve: _resolver2.default, wrap: _wrap2.default };
 
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -713,9 +724,9 @@
 	    return Promise.all(promises);
 	};
 
-/***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -723,7 +734,7 @@
 	    value: true
 	});
 
-	var _react = __webpack_require__(11);
+	var _react = __webpack_require__(12);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -741,7 +752,7 @@
 	*/
 
 	exports.default = function (Component) {
-	    var beforeServerRender = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];
+	    var beforeServerRender = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
 
 
 	    return _react2.default.createClass({ // eslint-disable-line
@@ -757,5 +768,5 @@
 	    });
 	};
 
-/***/ }
+/***/ })
 /******/ ]);
