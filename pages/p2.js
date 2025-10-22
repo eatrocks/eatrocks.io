@@ -13,7 +13,7 @@ export default function Page() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          eatrocks<Link href="/">.</Link>io
+          back to eatrocks<Link href="/">.</Link>io
         </h1>
       </main>
     </div>
