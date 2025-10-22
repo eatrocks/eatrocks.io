@@ -1,0 +1,21 @@
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  position: absolute;
+  /* top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px; */
+  inset: 0px;
+  margin: auto;
+  text-align: center;
+  max-height: min-content;
+  max-width: min-content;
+}
+
+.title {
+  line-height: 1.15;
+  font-size: 4rem;
+}
